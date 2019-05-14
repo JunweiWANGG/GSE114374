@@ -2,7 +2,7 @@
 #SBATCH -p batch
 #SBATCH -N 1
 #SBATCH -n 8
-#SBATCH --time=04:00:00
+#SBATCH --time=06:00:00
 #SBATCH --mem=32GB
 #SBATCH -o /fast/users/a1634284/GSE114374/slurm/%x_%j.out
 #SBATCH -e /fast/users/a1634284/GSE114374/slurm/%x_%j.err
@@ -50,6 +50,7 @@ cellranger count --id=${ID}  \
  	--sample=bamtofastq \
 	--fastqs=${FQ} \
 	--chemistry=SC3Pv2 \
- 	--localcores=8
+ 	--localcores=8 \
+ 	--localmem=32
 
 
