@@ -16,21 +16,31 @@ module load SAMtools/1.3.1-foss-2016b
 # Define ID and Paths
 ID=$1
 SOURCEDIR=/fast/users/a1634284/GSE114374/0_rawData/fastq
+
+# Ensure that the ID has been set
+if [ -z "${ID}"]
+then
+	echo "You need to set the ID argument!"
+	exit 1
+fi
+
+# CellRanger will write to the current directory, so 
+# let's change into this directory to set our output
 OUTDIR=/fast/users/a1634284/GSE114374/1_cellrangerCount
-NEWID=$(echo ${ID} | sed -r 's/_//g')
+echo "Sample will be written to ${OUTDIR}/${ID}"
+cd ${OUTDIR}
+
 
 # Find FASTQ directories 
 FQ=$(find ${SOURCEDIR}/${ID} -maxdepth 1 -mindepth 1 | tr '\n' ',' | sed -r 's/,$/\n/g') 
 echo "Found ${FQ}"
 
-echo "Sample will be written as ${NEWID}"
-
-# cell ranger count 
-cellranger count --id=${NEWID}  \
---transcriptome=/fast/users/a1634284/Cell_ranger/mm10  \
---sample=bamtofastq \
---fastqs=${FQ} \
---chemistry=SC3Pv2 \
---localcores=8
+# cell ranger count
+cellranger count --id=${ID}  \
+ 	--transcriptome=/fast/users/a1634284/Cell_ranger/mm10  \
+ 	--sample=bamtofastq \
+	--fastqs=${FQ} \
+	--chemistry=SC3Pv2 \
+ 	--localcores=8
 
 
