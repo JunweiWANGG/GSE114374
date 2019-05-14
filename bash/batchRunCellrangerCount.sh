@@ -22,5 +22,5 @@ do
 			exit
 		fi
 	fi
-	echo "sbatch ${PROJROOT}/bash/Run_Cellranger_count.sh ${S} ${REF}"
+	sbatch ${PROJROOT}/bash/Run_Cellranger_count.sh ${S} ${REF}
 done
