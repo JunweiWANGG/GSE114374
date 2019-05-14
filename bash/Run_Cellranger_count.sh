@@ -24,6 +24,15 @@ then
 	exit 1
 fi
 
+# Setup to manually specify the reference 
+REF=$2
+# Ensure that the ID has been set
+if [ -z "${REF}"]
+then
+	echo "You need to set the Reference as well as the ID!"
+	exit 2
+fi
+
 # CellRanger will write to the current directory, so 
 # let's change into this directory to set our output
 OUTDIR=/fast/users/a1634284/GSE114374/1_cellrangerCount
@@ -37,7 +46,7 @@ echo "Found ${FQ}"
 
 # cell ranger count
 cellranger count --id=${ID}  \
- 	--transcriptome=/fast/users/a1634284/Cell_ranger/mm10  \
+ 	--transcriptome=${REF}  \
  	--sample=bamtofastq \
 	--fastqs=${FQ} \
 	--chemistry=SC3Pv2 \
