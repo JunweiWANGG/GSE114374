@@ -2,7 +2,7 @@
 #SBATCH -p batch
 #SBATCH -N 1
 #SBATCH -n 8
-#SBATCH --time=06:00:00
+#SBATCH --time=14:00:00
 #SBATCH --mem=32GB
 #SBATCH -o /fast/users/a1634284/GSE114374/slurm/%x_%j.out
 #SBATCH -e /fast/users/a1634284/GSE114374/slurm/%x_%j.err
