@@ -26,7 +26,7 @@ fi
 
 # Setup to manually specify the reference 
 REF=$2
-# Ensure that the ID has been set
+# Ensure that the REF has been set
 if [ -z "${REF}"]
 then
 	echo "You need to set the Reference as well as the ID!"
@@ -44,7 +44,7 @@ cd ${OUTDIR}
 FQ=$(find ${SOURCEDIR}/${ID} -maxdepth 1 -mindepth 1 | tr '\n' ',' | sed -r 's/,$/\n/g') 
 echo "Found ${FQ}"
 
-# cell ranger count
+# cellranger count
 cellranger count --id=${ID}  \
  	--transcriptome=${REF}  \
  	--sample=bamtofastq \
