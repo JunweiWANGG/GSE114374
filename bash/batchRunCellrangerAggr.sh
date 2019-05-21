@@ -6,5 +6,5 @@ echo -e "Found:\n${SAMPLES}"
 
 for S in ${SAMPLES}
 do 
-	echo "sbatch ${PROJROOT}/bash/Run_Cellranger_aggr.sh ${S}"
+	sbatch ${PROJROOT}/bash/Run_Cellranger_aggr.sh ${S}
 done
