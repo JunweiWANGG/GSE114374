@@ -19,3 +19,8 @@ slurm/
 *cache*
 *files*
 *test*
+0_rawData/raw_counts/
+1_cellrangerCount/
+2_cellrangerAggr/
+*DS_Store
+*\._*
